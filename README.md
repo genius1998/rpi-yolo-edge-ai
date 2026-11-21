@@ -2,6 +2,12 @@
 
 Raspberry Pi 5 카메라로 직접 모은 사진에 라벨을 달고 YOLOv8n을 학습시킨 뒤, ONNX로 변환해 보드 위에서 실시간으로 게임패드를 찾는 엣지 AI 실습이다.
 
+<p align="center">
+  <img src="docs/images/result.webp" alt="Raspberry Pi 5 실시간 추론 화면 (녹화 영상 앞 10초)" width="560">
+</p>
+
+<p align="center"><em>Raspberry Pi 5 카메라 영상에 학습한 모델로 추론한 결과 (녹화 영상 앞 10초)</em></p>
+
 - 데이터: Raspberry Pi 5 카메라(Picamera2)로 찍은 게임패드 사진 100장, 클래스 1개(`game pad`)
 - 학습: Roboflow에서 라벨링한 데이터로 YOLOv8n을 파인튜닝했다.
 - 배포: 학습한 모델을 입력 224×224의 ONNX로 내보내고, Raspberry Pi 5에서 onnxruntime으로 카메라 영상에 추론했다.
@@ -95,9 +101,7 @@ Raspberry Pi 5 카메라로 직접 모은 사진에 라벨을 달고 YOLOv8n을 
 
 ## 4. 결과
 
-![Raspberry Pi 5 실시간 추론 화면 (녹화 영상 앞 10초)](docs/images/result.webp)
-
-*Raspberry Pi 5에서 카메라를 움직이며 14초 동안 추론한 영상의 앞 10초다. 전체 영상은 `results/inference.mp4`에 있다.*
+맨 위의 영상은 Raspberry Pi 5에서 카메라를 움직이며 14초 동안 추론한 영상의 앞 10초다. 전체 영상은 `results/inference.mp4`에 있다.
 
 - 게임패드가 화면 가운데에 크게 잡히면 `game pad` 박스와 신뢰도가 표시된다.
 - 게임패드가 화면 가장자리에 걸리거나 작게 보이는 장면에서는 박스가 뜨지 않은 경우가 많았다. 원인은 따로 실험해 확인하지 않았다.
